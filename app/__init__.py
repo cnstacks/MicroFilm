@@ -7,7 +7,7 @@
 # Author  : 天晴天朗
 # Email   : tqtl@tqtl.org
 
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -18,3 +18,8 @@ from app.admin import admin as admin_blueprint
 
 app.register_blueprint(home_blueprint)
 app.register_blueprint(admin_blueprint, url_prefix="/admin")
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return render_template("home/404.html"), 404
