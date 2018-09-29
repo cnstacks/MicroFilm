@@ -8,10 +8,18 @@
 # Email   : tqtl@tqtl.org
 
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+from datetime import datetime
+import pymysql
 
 app = Flask(__name__)
-
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:Tqtl911!@#)^@localhost:3306/MicroFilm"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+app.config['SECRET_KEY'] = 'af88db871dce46cf9a68c97ed48a9892'
 app.debug = True
+
+db = SQLAlchemy(app)
 
 from app.home import home as home_blueprint
 from app.admin import admin as admin_blueprint
