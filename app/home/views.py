@@ -19,7 +19,7 @@ def login():
 
 @home.route("/logout")
 def logout():
-    return redirect(url_for("home.logout.html"))
+    return redirect(url_for("home.login"))
 
 
 @home.route("/regist/")
